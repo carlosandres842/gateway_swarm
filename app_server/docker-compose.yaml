@@ -1,0 +1,19 @@
+version: '3'
+networks:
+  bymn:
+    external:
+      name: controller_app
+services:
+    app_server:
+        container_name: app_server
+        image: controllerapp
+        ports:
+            - 8085:8085
+        restart: always
+        volumes:
+            - /home/swarm/blocksaas_production/crypto-config:/crypto
+        deploy:
+            mode: replicated
+            replicas: 1
+            restart_policy:
+              condition: on-failure

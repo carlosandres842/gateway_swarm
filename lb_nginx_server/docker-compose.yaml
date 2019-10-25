@@ -1,0 +1,12 @@
+version: '3'
+networks:
+  bymn:
+    external:
+      name: controller_app
+services:
+    nginx_server:
+        container_name: nginx_server
+        image: nginx_server
+        ports:
+            - 8080:8080
+        restart: always
